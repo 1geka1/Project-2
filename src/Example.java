@@ -21,6 +21,32 @@ public class Example {
         }
         return TRAN;
     }
+    public static int turnOrder(int[][] arrTable) {
+        int keyX = 0;
+        int keyO = 0;
+        int keyZero = 0;
+        int ret = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (arrTable[i][j] != 0){
+                    if (arrTable[i][j] == 1) {
+                    keyX++;
+                    } else if (arrTable[i][j] > 1) {
+                    keyO++;
+                    }
+                }else keyZero++;
+            }
+        }if (keyX > keyO){
+            ret = 1;
+        } else if (keyO > keyX) {
+            ret = 0;
+        } else if (keyO == keyX){
+            ret = 1;
+        }
+        return ret;
+    }
+
 
 
 
@@ -102,11 +128,11 @@ public class Example {
 
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < b; j++) {
-                if (tranConvert[i][j] == '_') {
+                if (table[i][j] == "_") {
                     arrTable[i][j] = 0;
-                } else if (tranConvert[i][j] == 'X') {
+                } else if (table[i][j] == "X") {
                     arrTable[i][j] = 1;
-                } else if (tranConvert[i][j] == 'O') {
+                } else if (table[i][j] == "O") {
                     arrTable[i][j] = 2;
                 }
             }
@@ -114,7 +140,6 @@ public class Example {
 
         while (true) {
             if (!Won) {
-
                 while (true) {
                     System.out.print("Enter the coordinates: ");
                     if (in.hasNextInt()) {
@@ -130,8 +155,12 @@ public class Example {
                             if (arrTable[first - 1][second - 1] == 1 || arrTable[first - 1][second - 1] == 2) {
                                 System.out.println("This cell is occupied! Choose another one!");
                                 continue;
-                            } else {
+                            } else if(turnOrder(arrTable) == 1){
                                 table[first - 1][second - 1] = "X";
+                                arrTable[first - 1][second - 1] = 1;
+                                break;
+                            }else {
+                                table[first - 1][second - 1] = "O";
                                 arrTable[first - 1][second - 1] = 1;
                                 break;
                             }
