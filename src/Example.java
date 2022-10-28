@@ -21,6 +21,19 @@ public class Example {
         }
         return TRAN;
     }
+    public static boolean draw(int[][] arrTable){
+        int ret = 0;
+        for (int i = 0; i < 3;i++){
+            for (int j = 0; j < 3;j++){
+                if (arrTable[i][j] != 0){
+                    ret ++;
+                }
+            }
+        }
+
+        return ret >= 9;
+    }
+
     public static int turnOrder(int[][] arrTable) {
         int keyX = 0;
         int keyO = 0;
@@ -31,11 +44,11 @@ public class Example {
             for (int j = 0; j < 3; j++) {
                 if (arrTable[i][j] != 0){
                     if (arrTable[i][j] == 1) {
-                    keyX++;
+                    keyX += 1;
                     } else if (arrTable[i][j] > 1) {
-                    keyO++;
+                    keyO += 1;
                     }
-                }else keyZero++;
+                }else keyZero += 1;
             }
         }if (keyX > keyO){
             ret = 1;
@@ -47,7 +60,15 @@ public class Example {
         return ret;
     }
 
-
+    static void getTable(String[][] table){
+        System.out.println("---------");
+        System.out.print("\t" + "| " + table[0][0] + " " + table[0][1] + " " + table[0][2] + " |");
+        System.out.println();
+        System.out.print("\t" + "| " + table[1][0] + " " + table[1][1] + " " + table[1][2] + " |");
+        System.out.println();
+        System.out.print("\t" + "| " + table[2][0] + " " + table[2][1] + " " + table[2][2] + " |");
+        System.out.println("---------");
+    }
 
 
     public static void main(String[] args) {
@@ -70,20 +91,6 @@ public class Example {
             for (int j = 0; j < table.length; j++) {
                 table[i][j] = "table(" + i + ")(" + j + ")";
             }
-        }
-
-
-        int exampleTable[][] = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}};
-
-
-        for (int i = 0; i < exampleTable.length; i++) {
-            for (int j = 0; j < exampleTable.length; j++) {
-                System.out.print(" " + exampleTable[i][j] + " ");
-            }
-            System.out.println();
         }
 
         char[] tran;
@@ -155,17 +162,17 @@ public class Example {
                             if (arrTable[first - 1][second - 1] == 1 || arrTable[first - 1][second - 1] == 2) {
                                 System.out.println("This cell is occupied! Choose another one!");
                                 continue;
-                            } else if(turnOrder(arrTable) == 1){
+                            } else if (turnOrder(arrTable) == 1) {
                                 table[first - 1][second - 1] = "X";
                                 arrTable[first - 1][second - 1] = 1;
                                 break;
-                            }else {
+                            } else {
                                 table[first - 1][second - 1] = "O";
                                 arrTable[first - 1][second - 1] = 1;
                                 break;
                             }
                         }
-                    } else if(in.hasNextLine()){
+                    } else if (in.hasNextLine()) {
                         String costil = in.nextLine();
                         System.out.println("You should enter numbers!");
                         continue;
@@ -173,7 +180,7 @@ public class Example {
                     }
                 }
 
-                System.out.print("\t" + "---------");
+                /*System.out.print("\t" + "---------");
                 for (int i = 0; i < table.length; i++) {
                     System.out.println();
                     for (int j = 0; j < table[i].length; j++) {
@@ -182,7 +189,10 @@ public class Example {
                 }
                 System.out.println();
                 System.out.println("\t" + "---------");
-                System.out.println();
+                System.out.println();*/
+                getTable(table);
+
+
                 System.out.print("\t" + "---------");
                 for (int i = 0; i < table.length; i++) {
                     System.out.println();
@@ -198,71 +208,75 @@ public class Example {
             /*for (int i = 0; i < table.length; i++) {
                 for (int j = 0; j < table.length; j++) {*/
 
-                    if (table[0][0] == table[0][1] & table[0][1] == table[0][2] & table[0][0] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    } else if (table[0][0] == table[0][1] && table[0][1] == table[0][2] && table[0][0] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    } else if (table[1][0] == table[1][1] && table[1][1] == table[1][2] && table[1][0] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    } else if (table[1][0] == table[1][1] && table[1][1] == table[1][2] && table[1][0] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    } else if (table[2][0] == table[2][1] && table[2][1] == table[2][2] && table[2][0] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    }else if (table[2][0] == table[2][1] && table[2][1] == table[2][2] && table[2][0] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    } else if (table[0][0] == table[1][0] && table[1][0] == table[2][0] && table[0][0] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    }else if (table[0][0] == table[1][0] && table[1][0] == table[2][0] && table[0][0] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    } else if (table[0][1] == table[1][1] && table[1][1] == table[2][1] && table[0][1] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    }else if (table[0][1] == table[1][1] && table[1][1] == table[2][1] && table[0][1] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    } else if (table[0][2] == table[1][2] && table[1][2] == table[2][2] && table[0][2] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    }else if (table[0][2] == table[1][2] && table[1][2] == table[2][2] && table[0][2] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    } else if (table[0][0] == table[1][1] && table[1][1] == table[2][2] && table[0][0] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    }else if (table[0][0] == table[1][1] && table[1][1] == table[2][2] && table[0][0] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    } else if (table[0][2] == table[1][1] && table[1][1] == table[2][0] && table[0][2] == "X") {
-                        Won = true;
-                        System.out.println("\t" + "X wins");
-                        break;
-                    }else if (table[0][2] == table[1][1] && table[1][1] == table[2][0] && table[0][2] == "O") {
-                        Won = true;
-                        System.out.println("\t" + "O wins");
-                        break;
-                    }else Won = false;
+                if (table[0][0] == table[0][1] & table[0][1] == table[0][2] & table[0][0] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[0][0] == table[0][1] && table[0][1] == table[0][2] && table[0][0] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                } else if (table[1][0] == table[1][1] && table[1][1] == table[1][2] && table[1][0] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[1][0] == table[1][1] && table[1][1] == table[1][2] && table[1][0] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                } else if (table[2][0] == table[2][1] && table[2][1] == table[2][2] && table[2][0] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[2][0] == table[2][1] && table[2][1] == table[2][2] && table[2][0] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                } else if (table[0][0] == table[1][0] && table[1][0] == table[2][0] && table[0][0] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[0][0] == table[1][0] && table[1][0] == table[2][0] && table[0][0] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                } else if (table[0][1] == table[1][1] && table[1][1] == table[2][1] && table[0][1] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[0][1] == table[1][1] && table[1][1] == table[2][1] && table[0][1] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                } else if (table[0][2] == table[1][2] && table[1][2] == table[2][2] && table[0][2] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[0][2] == table[1][2] && table[1][2] == table[2][2] && table[0][2] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                } else if (table[0][0] == table[1][1] && table[1][1] == table[2][2] && table[0][0] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[0][0] == table[1][1] && table[1][1] == table[2][2] && table[0][0] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                } else if (table[0][2] == table[1][1] && table[1][1] == table[2][0] && table[0][2] == "X") {
+                    Won = true;
+                    System.out.println("\t" + "X wins");
+                    break;
+                } else if (table[0][2] == table[1][1] && table[1][1] == table[2][0] && table[0][2] == "O") {
+                    Won = true;
+                    System.out.println("\t" + "O wins");
+                    break;
+                }else if (draw(arrTable) && !Won) {
+                    Won = true;
+                    System.out.println("\t" + "Draw");
+                    break;
+                }else Won = false;
 
                 System.out.println("Game not finished");
         }else {
