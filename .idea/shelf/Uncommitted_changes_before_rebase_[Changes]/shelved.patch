@@ -1,0 +1,84 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -3,7 +3,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="60fe9604-9e9c-4abf-acaa-96aff0c1a9f4" name="Changes" comment="added check whose move">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Example.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Example.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -18,6 +17,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="Easy-does-it" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -54,6 +58,10 @@
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.Example" />
++        <item itemvalue="Application.Example" />
++        <item itemvalue="Application.Example" />
++        <item itemvalue="Application.Example" />
++        <item itemvalue="Application.Example" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -87,13 +95,43 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="origin/main" />
++                        <option value="main" />
+                       </list>
+                     </value>
+                   </entry>
+                 </map>
+               </option>
+             </State>
++          </value>
++        </entry>
++      </map>
++    </option>
++    <option name="RECENT_FILTERS">
++      <map>
++        <entry key="Branch">
++          <value>
++            <list>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="Initial-setup" />
++                </option>
++              </RecentGroup>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="initialSetup" />
++                </option>
++              </RecentGroup>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="origin/Initial-setup" />
++                </option>
++              </RecentGroup>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="origin/initialSetup" />
++                </option>
++              </RecentGroup>
++            </list>
+           </value>
+         </entry>
+       </map>

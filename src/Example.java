@@ -1,6 +1,18 @@
 import java.util.Scanner;
 
 public class Example {
+    public static void easyBotMove(String [][] table, int [][] arrTable){
+        int i,j;
+        do {
+            i = (int) (Math.random() * 3);
+            j = (int) (Math.random() * 3);
+        } while (table[i][j] == "O" || table[i][j] == "X");
+        table[i][j] = "O";
+        arrTable[i][j] = 2;
+        System.out.println("Making move level \"easy\" ");
+        getTable(table);
+    }
+
     public static char[][] convert1DTo2D(char[] a) {
         int columns = 3;
         int rows = a.length / columns;
@@ -61,13 +73,14 @@ public class Example {
     }
 
     static void getTable(String[][] table){
-        System.out.println("---------");
+        System.out.println("\t" + "---------");
         System.out.print("\t" + "| " + table[0][0] + " " + table[0][1] + " " + table[0][2] + " |");
         System.out.println();
         System.out.print("\t" + "| " + table[1][0] + " " + table[1][1] + " " + table[1][2] + " |");
         System.out.println();
         System.out.print("\t" + "| " + table[2][0] + " " + table[2][1] + " " + table[2][2] + " |");
-        System.out.println("---------");
+        System.out.println();
+        System.out.println("\t" + "---------");
     }
 
 
@@ -180,33 +193,9 @@ public class Example {
                     }
                 }
 
-                /*System.out.print("\t" + "---------");
-                for (int i = 0; i < table.length; i++) {
-                    System.out.println();
-                    for (int j = 0; j < table[i].length; j++) {
-                        System.out.print("\t" + table[i][j]);
-                    }
-                }
-                System.out.println();
-                System.out.println("\t" + "---------");
-                System.out.println();*/
                 getTable(table);
+                easyBotMove(table,arrTable);
 
-
-                System.out.print("\t" + "---------");
-                for (int i = 0; i < table.length; i++) {
-                    System.out.println();
-                    for (int j = 0; j < arrTable[i].length; j++) {
-                        System.out.print("\t" + arrTable[i][j]);
-                    }
-                }
-                System.out.println();
-                System.out.println("\t" + "---------");
-                System.out.println();
-
-
-            /*for (int i = 0; i < table.length; i++) {
-                for (int j = 0; j < table.length; j++) {*/
 
                 if (table[0][0] == table[0][1] & table[0][1] == table[0][2] & table[0][0] == "X") {
                     Won = true;
