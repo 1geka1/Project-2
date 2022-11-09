@@ -3,81 +3,81 @@ import java.util.Scanner;
 public class Example {
     static Scanner in = new Scanner(System.in);
     static final int columnsAndRows = 3;
-    static boolean Won = false;
+    static boolean won = false;
     static int[][] arrTable = new int[columnsAndRows][columnsAndRows];
     static String[][] table = new String[columnsAndRows][columnsAndRows];
 
 
     public static void victoryCheck(String[][] table, int [][] arrTable){
         if (table[0][0].equals(table[0][1]) & table[0][1].equals(table[0][2]) & table[0][0].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[0][0].equals(table[0][1]) && table[0][1].equals(table[0][2]) && table[0][0].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
         } else if (table[1][0].equals(table[1][1]) && table[1][1].equals(table[1][2]) && table[1][0].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[1][0].equals(table[1][1]) && table[1][1].equals(table[1][2]) && table[1][0].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
         } else if (table[2][0].equals(table[2][1]) && table[2][1].equals(table[2][2]) && table[2][0].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[2][0].equals(table[2][1]) && table[2][1].equals(table[2][2]) && table[2][0].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
         } else if (table[0][0].equals(table[1][0]) && table[1][0].equals(table[2][0]) && table[0][0].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[0][0].equals(table[1][0]) && table[1][0].equals(table[2][0]) && table[0][0].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
         } else if (table[0][1].equals(table[1][1]) && table[1][1].equals(table[2][1]) && table[0][1].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[0][1].equals(table[1][1]) && table[1][1].equals(table[2][1]) && table[0][1].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
         } else if (table[0][2].equals(table[1][2]) && table[1][2].equals(table[2][2]) && table[0][2].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[0][2].equals(table[1][2]) && table[1][2].equals(table[2][2]) && table[0][2].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
         } else if (table[0][0].equals(table[1][1]) && table[1][1].equals(table[2][2]) && table[0][0].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[0][0].equals(table[1][1]) && table[1][1].equals(table[2][2]) && table[0][0].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
         } else if (table[0][2].equals(table[1][1]) && table[1][1].equals(table[2][0]) && table[0][2].equals("X")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "X wins");
 
         } else if (table[0][2].equals(table[1][1]) && table[1][1].equals(table[2][0]) && table[0][2].equals("O")) {
-            Won = true;
+            won = true;
             System.out.println("\t" + "O wins");
 
-        } else if (draw(arrTable) && !Won) {
-            Won = true;
+        } else if (draw(arrTable) && !won) {
+            won = true;
             System.out.println("\t" + "Draw");
 
-        } else Won = false;
+        } else won = false;
         System.out.println("Game not finished");
     }
     public static char[][] convert1DTo2D(char[] fieldInput) {
@@ -87,30 +87,28 @@ public class Example {
         if (size % 2 != 0) {
             rows += 1;
         }
-        char[][] TRAN = new char[rows][];
+        char[][] convert = new char[rows][];
         int count = 0;
 
         for (int i = 0; i < rows; i++) {
-            TRAN[i] = (i + 1 < rows) ? new char[columnsAndRows] : new char[fieldInput.length % columnsAndRows];
+            convert[i] = (i + 1 < rows) ? new char[columnsAndRows] : new char[fieldInput.length % columnsAndRows];
             for (int j = 0; j < columnsAndRows; j++) {
                 if (count == fieldInput.length) break;
-                TRAN[i][j] = fieldInput[count];
+                convert[i][j] = fieldInput[count];
                 count++;
             }
         }
-        return TRAN;
+        return convert;
     }
     public static boolean draw(int[][] arrTable){
-        int ret = 0;
+        int draw = 0;
         for (int i = 0; i < columnsAndRows;i++){
             for (int j = 0; j < columnsAndRows;j++){
                 if (arrTable[i][j] != 0){
-                    ret ++;
+                    draw ++;
                 }
             }
-        }
-
-        return ret == 9;
+        }return draw == 9;
     }
 
     public static boolean turnOrder(int[][] arrTable) {
@@ -127,9 +125,7 @@ public class Example {
                     }
                 }
             }
-        }
-
-        return keyX <= keyO;
+        }return keyX <= keyO;
     }
     public static char[][] fillingTables(){
         char[] fieldInput;
@@ -190,7 +186,7 @@ public class Example {
         char[][] fieldInputConvert = fillingTables();
         tableRefill(fieldInputConvert);
         while (true) {
-            if (!Won) {
+            if (!won) {
                 while (true) {
                     System.out.print("Enter the coordinates: ");
                     if (in.hasNextInt()) {
