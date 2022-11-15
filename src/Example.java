@@ -108,7 +108,6 @@ public class Example {
             }
         }
         getTable(table);
-        victoryCheck(table,arrTable);
     }
 
     public static void easyBotMove(){
@@ -127,10 +126,147 @@ public class Example {
 
         System.out.println("Making move level \"easy\" ");
         getTable(table);
-        victoryCheck(table,arrTable);
     }
 
+    public static void mediumBotMove(){
+        int a = 0;
+        int b = 0;
+        int i;
+        int j;
+        int loopDetection = 0;
 
+
+        if (turnOrder(arrTable)){
+            for(i = 0; i < columnsAndRows; i ++) {
+                for (j = 0; j < columnsAndRows; j++) {
+                    if (arrTable[i][a] == 1 && arrTable[i][a + 1] == 1 && arrTable[i][a + 2] == 0) {
+                        arrTable[i][a + 2] = 1;
+                        table[i][a + 2] = "X";
+                        loopDetection++;
+                    } else if (arrTable[i][a] == 1 && arrTable[i][a + 2] == 1 && arrTable[i][a + 1] == 0) {
+                        arrTable[i][a + 1] = 1;
+                        table[i][a + 1] = "X";
+                        loopDetection++;
+                    } else if (arrTable[i][a + 1] == 1 && arrTable[i][a + 2] == 1 && arrTable[i][a] == 0) {
+                        arrTable[i][a] = 1;
+                        table[i][a] = "X";
+                        loopDetection++;
+                    } else if (arrTable[b + 1][j] == 1 && arrTable[b][j] == 1 && arrTable[b + 2][j] == 0) {
+                        arrTable[b + 2][j] = 1;
+                        table[b + 2][j] = "X";
+                        loopDetection++;
+                    } else if (arrTable[b + 2][j] == 1 && arrTable[b][j] == 1 && arrTable[b + 1][j] == 0) {
+                        arrTable[b + 1][j] = 1;
+                        table[b + 1][j] = "X";
+                        loopDetection++;
+                    } else if (arrTable[b + 1][j] == 1 && arrTable[b + 2][j] == 1 && arrTable[b][j] == 0) {
+                        arrTable[b][j] = 1;
+                        table[b][j] = "X";
+                        loopDetection++;
+                    } else if (arrTable[a][b] == 1 && arrTable[a + 1][b + 1] == 1 && arrTable[a + 2][b + 2] == 0) {
+                        arrTable[a + 2][b + 2] = 1;
+                        table[a + 2][b + 2] = "X";
+                        loopDetection++;
+                    } else if (arrTable[a][b] == 1 && arrTable[a + 2][b + 2] == 1 && arrTable[a + 1][b + 1] == 0) {
+                        arrTable[a + 1][b + 1] = 1;
+                        table[a + 1][b + 1] = "X";
+                        loopDetection++;
+                    } else if (arrTable[a + 1][b + 1] == 1 && arrTable[a + 2][b + 2] == 1 && arrTable[a][b] == 0) {
+                        arrTable[a][b] = 1;
+                        table[a][b] = "X";
+                        loopDetection++;
+                    } else if (arrTable[a][b + 2] == 1 && arrTable[a + 1][b + 1] == 1 && arrTable[a + 2][b] == 0) {
+                        arrTable[a + 2][b] = 1;
+                        table[a + 2][b] = "X";
+                        loopDetection++;
+                    } else if (arrTable[a + 2][b] == 1 && arrTable[a + 1][b + 1] == 1 && arrTable[a][b + 2] == 0) {
+                        arrTable[a][b + 2] = 1;
+                        table[a][b + 2] = "X";
+                        loopDetection++;
+                    } else if (arrTable[a][b + 2] == 1 && arrTable[a + 2][b] == 1 && arrTable[a + 1][b + 1] == 0) {
+                        arrTable[a + 1][b + 1] = 1;
+                        table[a + 1][b + 1] = "X";
+                        loopDetection++;
+                    }
+                }
+            }
+
+            if (loopDetection == 0) {
+                do {
+                    i = (int) (Math.random() * 3);
+                    j = (int) (Math.random() * 3);
+                } while (table[i][j].equals("O") || table[i][j].equals("X"));
+                table[i][j] = "X";
+                arrTable[i][j] = 1;
+            }
+
+        } else {
+            for (i = 0; i < columnsAndRows; i++) {
+                for (j = 0; j < columnsAndRows; j++) {
+                    if (arrTable[i][a] == 2 && arrTable[i][a + 1] == 2 && arrTable[i][a + 2] == 0) {
+                        arrTable[i][a + 2] = 2;
+                        table[i][a + 2] = "O";
+                        loopDetection++;
+                    } else if (arrTable[i][a] == 2 && arrTable[i][a + 2] == 2 && arrTable[i][a + 1] == 0) {
+                        arrTable[i][a + 1] = 2;
+                        table[i][a + 1] = "O";
+                        loopDetection++;
+                    } else if (arrTable[i][a + 1] == 2 && arrTable[i][a + 2] == 2 && arrTable[i][a] == 0) {
+                        arrTable[i][a] = 2;
+                        table[i][a] = "O";
+                        loopDetection++;
+                    } else if (arrTable[b + 1][j] == 2 && arrTable[b][j] == 2 && arrTable[b + 2][j] == 0) {
+                        arrTable[b + 2][j] = 2;
+                        table[b + 2][j] = "O";
+                        loopDetection++;
+                    } else if (arrTable[b + 2][j] == 2 && arrTable[b][j] == 2 && arrTable[b + 1][j] == 0) {
+                        arrTable[b + 1][j] = 2;
+                        table[b + 1][j] = "O";
+                        loopDetection++;
+                    } else if (arrTable[b + 1][j] == 2 && arrTable[b + 2][j] == 2 && arrTable[b][j] == 0) {
+                        arrTable[b][j] = 2;
+                        table[b][j] = "O";
+                        loopDetection++;
+                    } else if (arrTable[a][b] == 2 && arrTable[a + 1][b + 1] == 2 && arrTable[a + 2][b + 2] == 0) {
+                        arrTable[a + 2][b + 2] = 2;
+                        table[a + 2][b + 2] = "O";
+                        loopDetection++;
+                    } else if (arrTable[a][b] == 2 && arrTable[a + 2][b + 2] == 2 && arrTable[a + 1][b + 1] == 0) {
+                        arrTable[a + 1][b + 1] = 2;
+                        table[a + 1][b + 1] = "O";
+                        loopDetection++;
+                    } else if (arrTable[a + 1][b + 1] == 2 && arrTable[a + 2][b + 2] == 2 && arrTable[a][b] == 0) {
+                        arrTable[a][b] = 2;
+                        table[a][b] = "O";
+                        loopDetection++;
+                    } else if (arrTable[a][b + 2] == 2 && arrTable[a + 1][b + 1] == 2 && arrTable[a + 2][b] == 0) {
+                        arrTable[a + 2][b] = 2;
+                        table[a + 2][b] = "O";
+                        loopDetection++;
+                    } else if (arrTable[a + 2][b] == 2 && arrTable[a + 1][b + 1] == 2 && arrTable[a][b + 2] == 0) {
+                        arrTable[a][b + 2] = 2;
+                        table[a][b + 2] = "O";
+                        loopDetection++;
+                    } else if (arrTable[a][b + 2] == 2 && arrTable[a + 2][b] == 2 && arrTable[a + 1][b + 1] == 0) {
+                        arrTable[a + 1][b + 1] = 2;
+                        table[a + 1][b + 1] = "O";
+                        loopDetection++;
+                    }
+                }
+            }
+            if (loopDetection == 0) {
+                do {
+                    i = (int) (Math.random() * 3);
+                    j = (int) (Math.random() * 3);
+                } while (table[i][j].equals("O") || table[i][j].equals("X"));
+                table[i][j] = "O";
+                arrTable[i][j] = 2;
+
+            }
+        }
+        System.out.println("Making move level \"medium\" ");
+        getTable(table);
+    }
     public static char[][] convert1DTo2D(char[] fieldInput) {
 
         int rows = fieldInput.length / columnsAndRows;
@@ -206,12 +342,20 @@ public class Example {
         return fieldInputConvert;
     }
     public static int gameModeSelection(){
-        int enteredValyes;
+        int enteredValues;
         System.out.println("\t" + "Select game mode:");
-        System.out.println("\t" + "[1] - bot vs bot   " + " [2] - bot vs player");
-        System.out.println("\t" + "[3] - player vs player");
-        enteredValyes = in.nextInt();
-        return enteredValyes;
+        System.out.println("\t" + "[1] - bot vs bot   " + " [2] - bot vs player\n" + "\t[3] - player vs player");
+        enteredValues = in.nextInt();
+        return enteredValues;
+    }
+    public static int enemyDifficultySelection(int gameMode){
+        int enteredValues;
+        if (gameMode == 1 || gameMode == 2) {
+        System.out.println("\t" + "Select enemy difficulty:");
+        System.out.println("\t" + "[1] - easy bot   " + " [2] - medium bot\n" + "\t[3] - hard bot");
+        enteredValues = in.nextInt();}
+        else {enteredValues = 0;}
+        return enteredValues;
     }
 
 
@@ -246,18 +390,39 @@ public class Example {
         char[][] fieldInputConvert = fillingTables();
         tableRefill(fieldInputConvert);
         int gameMode = gameModeSelection();
+        int enemyDifficulty = enemyDifficultySelection(gameMode);
         while (true) {
             if (!won) {
                 switch (gameMode) {
                     case 1:
-                        easyBotMove();
+                        if(enemyDifficulty == 1){
+                            easyBotMove();
+                            victoryCheck(table,arrTable);
+                            break;
+                        } else if (enemyDifficulty == 2) {
+                            mediumBotMove();
+                            victoryCheck(table,arrTable);
+                            break;
+                        }
                         break;
                     case 2:
-                        playerMove();
-                        easyBotMove();
+                        if (enemyDifficulty == 1){
+                            playerMove();
+                            victoryCheck(table,arrTable);
+                            if(!won){
+                            easyBotMove();
+                            victoryCheck(table,arrTable);}
+                        } else if (enemyDifficulty == 2) {
+                            playerMove();
+                            victoryCheck(table,arrTable);
+                            if(!won){
+                            mediumBotMove();
+                            victoryCheck(table,arrTable);}
+                        }
                         break;
                     case 3:
                         playerMove();
+                        victoryCheck(table,arrTable);
                         break;
                 }
             }else {
